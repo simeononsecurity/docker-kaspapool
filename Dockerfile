@@ -8,6 +8,11 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV container docker
 ENV TERM=xterm
 
+EXPOSE 16111
+EXPOSE 16110
+
+COPY run.sh
+
 # Update Packages
 RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade -y && apt-get -fuy install git automake cmake make gcc curl tar coreutils screen
 
@@ -17,7 +22,7 @@ RUN tar -C /usr/local -xvf go1.19.1.linux-amd64.tar.gz
 RUN printf 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
 RUN /usr/local/go/bin/go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && /usr/local/go/bin/go install . ./cmd/...
-#RUN screen -S node
+RUN screen -S node
 RUN cd ~/go/bin/ && ./kaspad --utxoindex && ./kaspactl GetBlockDagInfo
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/bin/bash", "run.sh" ]

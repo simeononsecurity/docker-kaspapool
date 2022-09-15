@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DOCKER_PLATFORMS: linux/amd64,linux/arm64
+      DOCKER_PLATFORMS: linux/amd64
 
     steps:
       - name: Docker Image Update Checker
@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
         if: steps.check.outputs.needs-updating == 'true'
       - name: Build the Docker image
-        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes && docker buildx build --platform linux/amd64,linux/arm64 -t simeononsecurity/docker-kaspapool:latest --progress=plain --push .
+        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes && docker buildx build --platform linux/amd64 -t simeononsecurity/docker-kaspapool:latest --progress=plain --push .
         if: steps.check.outputs.needs-updating == 'true'
       - name: Build and push
         uses: docker/build-push-action@v2
