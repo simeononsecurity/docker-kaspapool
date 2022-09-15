@@ -12,8 +12,8 @@ ENV TERM=xterm
 RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade -y && apt-get -fuy install git automake cmake make
 
 # Install Kaspa Node
-RUN curl -OL https://golang.org/dl/go1.19.linux-amd64.tar.gz && sha256sum go1.19.linux-amd64.tar.gz
-RUN tar -C /usr/local -xvf go1.19.linux-amd64.tar.gz
+RUN curl -OL https://go.dev/dl/go1.19.1.linux-amd64.tar.gz && sha256sum go1.19.1.linux-amd64.tar.gz
+RUN tar -C /usr/local -xvf go1.19.1.linux-amd64.tar.gz
 RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile && source ~/.profile 
 RUN go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && go install . ./cmd/...
