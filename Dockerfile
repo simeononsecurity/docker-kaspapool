@@ -19,7 +19,7 @@ RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade 
 # Install Kaspa Node
 RUN curl -OL https://go.dev/dl/go1.19.1.linux-amd64.tar.gz && sha256sum go1.19.1.linux-amd64.tar.gz
 RUN tar -C /usr/local -xvf go1.19.1.linux-amd64.tar.gz
-RUN printf 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+RUN printf 'export PATH=$PATH:/usr/local/go/bin:/root/go/bin' >> ~/.profile
 RUN /usr/local/go/bin/go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && /usr/local/go/bin/go install . ./cmd/...
 #RUN cd ~/go/bin/ && ./kaspad --utxoindex && ./kaspactl GetBlockDagInfo
