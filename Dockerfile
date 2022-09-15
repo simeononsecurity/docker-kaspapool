@@ -11,7 +11,7 @@ ENV TERM=xterm
 EXPOSE 16111
 EXPOSE 16110
 
-COPY run.sh
+COPY run.sh ./
 
 # Update Packages
 RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade -y && apt-get -fuy install git automake cmake make gcc curl tar coreutils screen
