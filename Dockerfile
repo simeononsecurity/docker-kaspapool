@@ -15,7 +15,7 @@ RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade 
 RUN curl -OL https://go.dev/dl/go1.19.1.linux-amd64.tar.gz && sha256sum go1.19.1.linux-amd64.tar.gz
 RUN tar -C /usr/local -xvf go1.19.1.linux-amd64.tar.gz
 RUN printf 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
-RUN go version
+RUN /usr/local/go/bin/go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && go install . ./cmd/...
 RUN screen -S node
 RUN cd ~/go/bin && ./kaspactl GetBlockDagInfo && ./kaspad --utxoindex
