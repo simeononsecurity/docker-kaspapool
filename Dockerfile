@@ -9,7 +9,7 @@ ENV container docker
 ENV TERM=xterm
 
 # Update Packages
-RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade -y && apt-get -fuy install git automake cmake make curl tar coreutils
+RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade -y && apt-get -fuy install git automake cmake make curl tar coreutils screen
 
 # Install Kaspa Node
 RUN curl -OL https://go.dev/dl/go1.19.1.linux-amd64.tar.gz && sha256sum go1.19.1.linux-amd64.tar.gz
