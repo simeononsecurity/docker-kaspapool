@@ -1,1 +1,3 @@
-cd ~/go/bin/ && ./kaspad --utxoindex && ./kaspactl GetBlockDagInfo
+cd ~/go/bin/ 
+./kaspad --utxoindex &
+./kaspactl GetBlockDagInfo
