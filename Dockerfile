@@ -18,6 +18,6 @@ RUN printf 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
 RUN /usr/local/go/bin/go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && /usr/local/go/bin/go install . ./cmd/...
 #RUN screen -S node
-RUN cd ~/go/bin && ./kaspactl GetBlockDagInfo && ./kaspad --utxoindex
+RUN cd /usr/local/go/bin/ && ./kaspactl GetBlockDagInfo && ./kaspad --utxoindex
 
 ENTRYPOINT [ "/bin/bash" ]
