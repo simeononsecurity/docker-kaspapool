@@ -24,4 +24,9 @@ RUN /usr/local/go/bin/go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && /usr/local/go/bin/go install . ./cmd/...
 #RUN cd ~/go/bin/ && ./kaspad --utxoindex && ./kaspactl GetBlockDagInfo
 
+# KASPA Stratum
+# RUN curl https://sh.rustup.rs -sSf -o rustinstall.sh && chmod +x rustinstall.sh && /bin/bash rustinstall.sh -q -y
+# RUN ~/.cargo/bin/rustc --version
+# RUN git clone https://github.com/fungibilly/kaspad-stratum.git && cd kaspad-stratum && cargo build --release && cd ~/kaspad-stratum/target/release 
+
 ENTRYPOINT [ "/bin/bash", "run.sh" ]
