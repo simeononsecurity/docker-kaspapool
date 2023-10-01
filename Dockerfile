@@ -20,8 +20,8 @@ RUN apt-get update && \
   apt-get -fuy --no-install-recommends install git automake cmake make gcc curl tar coreutils screen
 
 # Install Kaspa Node
-RUN curl -OL https://go.dev/dl/go1.19.1.linux-amd64.tar.gz && sha256sum go1.19.1.linux-amd64.tar.gz
-RUN tar -C /usr/local -xvf go1.19.1.linux-amd64.tar.gz
+RUN curl -OL https://go.dev/dl/go1.21.1.darwin-amd64.tar.gz && sha256sum go1.21.1.darwin-amd64.tar.gz
+RUN tar -C /usr/local -xvf go1.21.1.darwin-amd64.tar.gz
 RUN printf 'export PATH=$PATH:/usr/local/go/bin:/root/go/bin' >> ~/.profile
 RUN /usr/local/go/bin/go version
 RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && /usr/local/go/bin/go install . ./cmd/...
