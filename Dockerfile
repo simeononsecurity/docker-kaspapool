@@ -14,7 +14,10 @@ EXPOSE 16110
 COPY run.sh ./
 
 # Update Packages
-RUN apt-get update && apt-get -y install apt-utils && apt-get -fuy full-upgrade -y && apt-get -fuy install git automake cmake make gcc curl tar coreutils screen
+RUN apt-get update && \
+  apt-get -y --no-install-recommends install apt-utils && \ 
+  apt-get -fuy --no-install-recommends full-upgrade && \ 
+  apt-get -fuy --no-install-recommends install git automake cmake make gcc curl tar coreutils screen
 
 # Install Kaspa Node
 RUN curl -OL https://go.dev/dl/go1.19.1.linux-amd64.tar.gz && sha256sum go1.19.1.linux-amd64.tar.gz
@@ -28,5 +31,8 @@ RUN git clone https://github.com/kaspanet/kaspad && cd kaspad && /usr/local/go/b
 # RUN curl https://sh.rustup.rs -sSf -o rustinstall.sh && chmod +x rustinstall.sh && /bin/bash rustinstall.sh -q -y
 # RUN ~/.cargo/bin/rustc --version
 # RUN git clone https://github.com/fungibilly/kaspad-stratum.git && cd kaspad-stratum && cargo build --release && cd ~/kaspad-stratum/target/release 
+
+# Clean APT
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT [ "/bin/bash", "run.sh" ]
