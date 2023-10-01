@@ -16,8 +16,8 @@ COPY run.sh ./
 # Update Packages
 RUN apt-get update && \
   apt-get -y --no-install-recommends install apt-utils && \ 
-  apt-get -fuy --no-install-recommends full-upgrade && \ 
-  apt-get -fuy --no-install-recommends install git automake cmake make gcc curl tar coreutils screen
+  apt-get -fuy full-upgrade && \ 
+  apt-get -fuy install git automake cmake make gcc curl tar coreutils screen
 
 # Install Kaspa Node
 RUN curl -OL https://go.dev/dl/go1.21.1.darwin-amd64.tar.gz && sha256sum go1.21.1.darwin-amd64.tar.gz
